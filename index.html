@@ -1,29 +1,63 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>Bartender</title>
-    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="static/css-compiled/application.css" />
-  </head>
-  <body>
-    <h1>Hello, world!!!</h1>
+<head>
+  <title>Bartender</title>
+  <link rel="stylesheet" type="text/css" href="static/css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="static/css-compiled/application.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="navbar navbar-inverse">
+    <div class="navbar-inner">
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
 
+      <!-- Be sure to leave the brand out there if you want it shown -->
+      <a class="brand" href="#">Bartender</a>
+
+      <!-- Everything you want hidden at 940px or less, place within here -->
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">Taps</a></li>
+          <li><a href="#">Beers</a></li>
+          <li><a href="#">RFID Readers</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+    <h1>Bartender</h1>
     <ul id="makes"></ul>
 
-    <script type="text/javascript" src="static/js/bootstrap.js"></script>
-    <script type="text/javascript" src="modules.js"></script>
-    <script type="text/javascript">
-        var db = require('db').current();
-        var $ = require('jquery/core');
+    <footer class="row">
+      <ul class="footer-links">
+        <li>&copy; Jason Morrison 2013.  All Rights Reserved.</li>
+      </ul>
+      </div>
+    </footer>
+  </div>
 
-        db.getView('bartender', 'showDocs', function (err, data) {
-            if (err) {
-                // an error occurred
-                return alert(err);
-            }
-            for (var i = 0; i < data.rows.length; i++) {
-                $('<li/>').text(data.rows[i].key).appendTo('#makes');
-            }
-        });
-    </script>
-  </body>
+  <script type="text/javascript" src="static/js/bootstrap.js"></script>
+  <script type="text/javascript" src="modules.js"></script>
+  <script type="text/javascript">
+      var db = require('db').current();
+      var $ = require('jquery/core');
+
+      db.getView('bartender', 'showDocs', function (err, data) {
+          if (err) {
+              // an error occurred
+              return alert(err);
+          }
+          for (var i = 0; i < data.rows.length; i++) {
+              $('<li/>').text(data.rows[i].key).appendTo('#makes');
+          }
+      });
+  </script>
+</body>
 </html>
