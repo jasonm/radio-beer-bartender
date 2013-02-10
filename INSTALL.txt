@@ -1,0 +1,6 @@
+bundle
+vim config/couchdb.yml
+heroku create whatever-app-name
+heroku addons:add cloudant:oxygen
+heroku config:add COUCH_DATABASE_NAME=my-couch-db-database-name-of-choice
+git push heroku

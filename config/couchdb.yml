@@ -1,2 +1,6 @@
-development: http://localhost:5984/radio_beer_development
-test: http://localhost:5984/bartender_test
+development:
+  url: http://localhost:5984
+  database: radio_beer_development
+test:
+  url: http://localhost:5984
+  database: bartender_test
