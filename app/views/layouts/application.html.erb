@@ -6,9 +6,27 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="<%= body_class %>">
 
-<%= yield %>
+<% unless @suppress_navbar %>
+  <%= render partial: 'shared/navbar' %>
+<% end %>
+
+<div class="container">
+  <%= render partial: 'shared/flashes' %>
+
+  <%= yield %>
+
+  <footer class="row">
+    <ul class="footer-links">
+      <li>&copy; Jason Morrison 2013.  All Rights Reserved.</li>
+    </ul>
+    </div>
+  </footer>
+</div>
+
+<%= javascript_include_tag "application" %>
+<%= yield :javascript %>
 
 </body>
 </html>
