@@ -2,7 +2,7 @@
   "name": "bartender",
   "version": "0.0.1",
   "description": "Tending the radio-beer bars.",
-  "attachments": ["index.html"],
+  "attachments": ["index.html", "static"],
   "modules": ["lib"],
   "load": "lib/app",
   "dependencies": {

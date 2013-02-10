@@ -20,13 +20,27 @@ Installation
 
     npm install -g kanso
 
+* Install rubygem dependencies:
+
+    gem install sass foreman watchr ruby-fsevent # Mac OSX
+    gem install sass foreman watchr rev          # Linux/BSD
+
 * Install dependencies:
 
     kanso install
 
-* Deploy to the database name of your choice, I use `radio_beer_development`:
+* Specify the name of the database you want to deploy to:
 
-    kanso push radio_beer_development
+    cp env.example .env # now edit .env if you want to change the database.
+                        # The default is radio_beer_development
+
+* Deploy:
+
+    ./push
+
+* As you develop, automatically rebuild assets with sass/watchr:
+
+    foreman start
 
 User stories
 -------------------

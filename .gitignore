@@ -3,3 +3,5 @@
 *.swo
 packages/**/*
 erl_crash.dump
+.sass-cache
+.env
