@@ -1,0 +1,15 @@
+{
+  "name": "bartender",
+  "version": "0.0.1",
+  "description": "Tending the radio-beer bars.",
+  "attachments": ["index.html"],
+  "modules": ["lib"],
+  "load": "lib/app",
+  "dependencies": {
+    "attachments": null,
+    "modules": null,
+    "properties": null,
+    "db": null,
+    "jquery": null
+  }
+}

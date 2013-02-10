@@ -1,0 +1,16 @@
+[
+    {
+        "year": 1997,
+        "make": "Ford",
+        "model": "E350",
+        "description": "ac, abs, moon",
+        "price": 3000
+    },
+    {
+        "year": 1999,
+        "make": "Chevy",
+        "model": "Venture \"Extended Edition\"",
+        "description": "",
+        "price": 4900
+    }
+]
