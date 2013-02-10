@@ -3,12 +3,16 @@
   "version": "0.0.1",
   "description": "Tending the radio-beer bars.",
   "attachments": ["index.html", "static"],
-  "modules": ["lib"],
-  "load": "lib/app",
+  "coffee-script": {
+    "modules": ["lib"]
+  },
+  "load": "lib/load",
   "dependencies": {
+    "coffee-script-precompiler": null,
     "attachments": null,
     "modules": null,
     "properties": null,
+    "backbone": null,
     "db": null,
     "jquery": null
   }

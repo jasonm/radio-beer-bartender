@@ -43,21 +43,19 @@
     </footer>
   </div>
 
-  <script type="text/javascript" src="static/js/bootstrap.js"></script>
   <script type="text/javascript" src="modules.js"></script>
   <script type="text/javascript">
-      var db = require('db').current();
-      var $ = require('jquery/core');
+    // Export onto window so bootstrap.js can access it
+    window.Backbone = require('backbone');
+    window._ = require('underscore')._;
+    window.$ = require('jquery/core');
 
-      db.getView('bartender', 'showDocs', function (err, data) {
-          if (err) {
-              // an error occurred
-              return alert(err);
-          }
-          for (var i = 0; i < data.rows.length; i++) {
-              $('<li/>').text(data.rows[i].key).appendTo('#makes');
-          }
-      });
+    $(function() {
+      var App = require('lib/app').App;
+      var db = require('db').current();
+      new App(db);
+    });
   </script>
+  <script type="text/javascript" src="static/js/bootstrap.js"></script>
 </body>
 </html>
