@@ -2,3 +2,4 @@
 *.swp
 *.swo
 packages/**/*
+erl_crash.dump
