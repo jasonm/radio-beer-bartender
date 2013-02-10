@@ -1,11 +1,19 @@
+class View extends Backbone.View
+  constructor: (options) ->
+    @rows = options.rows
+
+  render: ->
+    $('<li/>').text(row.key).appendTo('#makes') for row in @rows
 
 exports.App =
   class App
     constructor: (db) ->
       @name = name
+      @db = db
 
-      db.getView 'bartender', 'showDocs', (err, data) ->
+    run: ->
+      @db.getView 'bartender', 'showDocs', (err, data) ->
         if err
           return alert(err)
-
-        $('<li/>').text(row.key).appendTo('#makes') for row in data.rows
+        view = new View({rows : data.rows})
+        view.render()
