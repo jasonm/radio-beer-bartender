@@ -4,43 +4,83 @@ Bartender: The CouchApp
 Let's try this out.
 
 
+Prerequisites
+-------------
+
+Get couchdb:
+
+```
+brew install couchdb
+```
+
+Install node and npm:
+
+```
+brew install node
+```
+
+Install [kanso](http://kan.so):
+
+```
+npm install -g kanso
+```
+
+Install rubygem dependencies:
+
+```
+gem install sass foreman watchr ruby-fsevent # Mac OSX
+gem install sass foreman watchr rev          # Linux/BSD
+```
+
 Installation
--------------------
+------------
 
-* Get a couchdb running on <http://localhost:5984>:
+Install dependencies:
 
-    brew install couchdb
-    couchdb
+```
+kanso install
+```
 
-* Install node and npm:
+Specify the name of the database you want to deploy to:
 
-    brew install node
+```
+cp env.example .env # now edit .env if you want to change the database.
+                    # The default is radio_beer_development
+```
 
-* Install [kanso](http://kan.so):
+Deploy:
 
-    npm install -g kanso
+```
+bin/push
+```
 
-* Install rubygem dependencies:
+You should see output ending with something like:
 
-    gem install sass foreman watchr ruby-fsevent # Mac OSX
-    gem install sass foreman watchr rev          # Linux/BSD
+```
+Build complete: 131ms
+Uploading...
+OK: http://localhost:5984/radio_beer_development/_design/bartender/index.html
+```
 
-* Install dependencies:
+Open that URL to view the app.
 
-    kanso install
 
-* Specify the name of the database you want to deploy to:
+Development
+-------------
 
-    cp env.example .env # now edit .env if you want to change the database.
-                        # The default is radio_beer_development
+As you develop, automatically rebuild SCSS files with `sass` and the Kanso site
+with `watchr`:
 
-* Deploy:
+```
+foreman start
+```
 
-    bin/push
+If couch isn't already running, it'll get run, too.
 
-* As you develop, automatically rebuild assets with sass/watchr:
+Edit `index.html`, `lib/**/*.js`, and `static/scss/*.scss` to make changes.
 
-    foreman start
+Notes
+===================
 
 User stories
 -------------------
@@ -150,8 +190,8 @@ Bartendings
   user_id
 ```
 
-tech notes
---------------
+Technical notes
+===============
 
 tech notes
 possible configs w rainbows on heroku
