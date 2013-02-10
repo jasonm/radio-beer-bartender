@@ -36,7 +36,7 @@ Installation
 
 * Deploy:
 
-    ./push
+    bin/push
 
 * As you develop, automatically rebuild assets with sass/watchr:
 

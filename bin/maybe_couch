@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+if `curl -s localhost:5984` == ''
+  system('couchdb')
+else
+  puts 'Couch already running on localhost:5984.'
+  STDOUT.flush
+
+  while(true)
+    begin
+      sleep 1
+    rescue Interrupt => e
+      exit(0)
+    end
+  end
+end
