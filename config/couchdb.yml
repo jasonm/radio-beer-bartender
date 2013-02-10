@@ -1,2 +1,2 @@
-development: http://localhost:5984/bartender_development
+development: http://localhost:5984/radio_beer_development
 test: http://localhost:5984/bartender_test
