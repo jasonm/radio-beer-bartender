@@ -11,3 +11,20 @@
  *= require_self
  *= require_tree .
  */
+
+@import "bootstrap";
+@import "bootstrap-responsive";
+
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+
+footer {
+  margin-top: 100px;
+  text-align: center;
+
+  ul.footer-links {
+    @extend .breadcrumb;
+  }
+}
