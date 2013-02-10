@@ -212,3 +212,14 @@ distributed app store thing?
 discussions of schematization, lazy gardening
   http://fourkitchens.com/blog/2009/07/05/how-schema-got-bad-name
   http://fourkitchens.com/blog/2010/02/21/cap-theorem-physics-airplanes-every-database-must-design-around-it
+
+possibly introduce livereload to kanso via gardener:
+  https://github.com/livereload/livereload-server
+  https://github.com/kanso/kanso-gardener
+  https://github.com/garden20/gardener
+
+I needed to add `sass watch` as a separate process because ruby `sass` is too slow to start up.
+  Go back to straight preprocessor with node-sass? https://github.com/andrew/node-sass
+
+Then maybe all ruby deps can be removed:
+  https://github.com/nodefly/node-foreman
