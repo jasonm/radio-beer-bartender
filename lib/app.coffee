@@ -2,28 +2,15 @@ class RfidScanView extends Backbone.View
   tagName: 'li'
 
   initialize: (options) ->
-    @model = options.model
     @listenTo(@model, 'change', @render)
 
   render: =>
     @$el.empty()
     @$el.html("#{@model.get('created_at')} - scanned #{@model.get('tag_id')} at #{@model.get('reader_description')}")
 
-class RfidScansView extends Backbone.View
+class RfidScansView extends Backbone.Marionette.CollectionView
+  itemView: RfidScanView
   tagName: 'ul'
-
-  initialize: (options) ->
-    @collection = options.collection
-    @listenTo(@collection, 'reset', @render)
-    @listenTo(@collection, 'add', @render)
-    @listenTo(@collection, 'remove', @render)
-
-  render: =>
-    @$el.empty()
-    for model in @collection.models
-      child = new RfidScanView({model})
-      child.render()
-      child.$el.appendTo(@el)
 
 class RfidScan extends Backbone.Model
 
