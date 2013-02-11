@@ -57,11 +57,11 @@
     // Export deps onto window so other non-requirejs static scripts can access them
     window._ = require('underscore')._;
     window.jQuery = window.$ = require('jquery/core');
-    window.Backbone = require('lib/backbone');
-    require('lib/jquery.couch');
-    require('lib/backbone-couchdb');
-    require('lib/backbone.marionette');
-    require('lib/backbone.marionette.handlebars');
+    window.Backbone = require('lib/vendor/backbone');
+    require('lib/vendor/jquery.couch');
+    require('lib/vendor/backbone-couchdb');
+    require('lib/vendor/backbone.marionette');
+    require('lib/vendor/backbone.marionette.handlebars');
   </script>
   <script type="text/javascript" src="static/js/bootstrap.js"></script>
 
