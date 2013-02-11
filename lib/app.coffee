@@ -17,16 +17,22 @@ class App
     @rootEl.find('#readers').html("<h1>TODO: Readers</h1>")
 
   setupTabs: =>
-    @navEl.find('a').click (e) =>
-      target = $(e.currentTarget)
+    @tabsEl = $('ul.nav') # TODO: inject
 
+    setTab = (href) =>
+      # TODO: pushstate or routes or something
+      document.location.hash = href
       @rootEl.find('>div').hide()
-      target.closest('ul').find('li').removeClass('active')
+      @rootEl.find(href).show()
 
-      target.closest('li').addClass('active')
-      @rootEl.find(target.attr('href')).show()
+      @tabsEl.find('li').removeClass('active')
+      @tabsEl.find("li a[href=#{href}]").closest('li').addClass('active')
 
+    @navEl.find('a').click (e) =>
+      setTab $(e.currentTarget).attr('href')
       e.preventDefault()
+
+    setTab(document.location.hash)
 
   setupScans: =>
     collection = new RfidScansCollection()
