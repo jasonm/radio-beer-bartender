@@ -33,7 +33,7 @@
 
 
     <h1>Bartender</h1>
-    <ul id="makes"></ul>
+    <div id="app"></div>
 
     <footer class="row">
       <ul class="footer-links">
@@ -45,18 +45,22 @@
 
   <script type="text/javascript" src="modules.js"></script>
   <script type="text/javascript">
-    // Export onto window so bootstrap.js can access it
-    window.Backbone = require('backbone');
+    // Export deps onto window so other non-requirejs static scripts can access them
     window._ = require('underscore')._;
-    window.$ = require('jquery/core');
+    window.jQuery = window.$ = require('jquery/core');
+    window.Backbone = require('lib/backbone');
+    require('lib/jquery.couch');
+    require('lib/backbone-couchdb');
+  </script>
+  <script type="text/javascript" src="static/js/bootstrap.js"></script>
 
+  <script type="text/javascript">
+    // Get the show on the road!
     $(function() {
       var App = require('lib/app').App;
-      var db = require('db').current();
-      var app = new App(db);
+      var app = new App('radio_beer_development', 'bartender', $('#app'));
       app.run();
     });
   </script>
-  <script type="text/javascript" src="static/js/bootstrap.js"></script>
 </body>
 </html>

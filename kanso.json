@@ -6,13 +6,13 @@
   "coffee-script": {
     "modules": ["lib"]
   },
+  "modules": ["lib"],
   "load": "lib/load",
   "dependencies": {
     "coffee-script-precompiler": null,
     "attachments": null,
     "modules": null,
     "properties": null,
-    "backbone": null,
     "db": null,
     "jquery": null
   }
