@@ -1,4 +1,5 @@
 {RfidScanView, RfidScansView, RfidScan, RfidScansCollection} = require('lib/rfid_scans')
+{BeerView, BeersView, Beer, BeersCollection} = require('lib/beers')
 
 class App
   constructor: (dbName, appName, rootEl, navEl) ->
@@ -10,10 +11,10 @@ class App
 
   run: =>
     @setupScans()
+    @setupBeers()
     @setupTabs()
 
     @rootEl.find('#taps').html("<h1>TODO: Taps</h1>")
-    @rootEl.find('#beers').html("<h1>TODO: Beers</h1>")
     @rootEl.find('#readers').html("<h1>TODO: Readers</h1>")
 
   setupTabs: =>
@@ -39,5 +40,12 @@ class App
     view = new RfidScansView({ collection: collection })
     @rootEl.find('#scans').append(view.$el)
     collection.fetch()
+
+  setupBeers: =>
+    collection = new BeersCollection()
+    view = new BeersView({ collection: collection })
+    @rootEl.find('#beers').append(view.$el)
+    collection.fetch()
+    window.bc = collection
 
 exports.App = App

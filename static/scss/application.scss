@@ -9,3 +9,16 @@ footer {
   margin-top: 100px;
   text-align: center;
 }
+
+li.beer {
+  span.name {
+    font-weight: bold;
+  }
+  span.abv {
+    font-style: italic;
+  }
+  span.brewery-name {
+  }
+  span.description {
+  }
+}
