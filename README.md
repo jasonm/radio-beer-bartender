@@ -41,17 +41,19 @@ Install dependencies:
 kanso install
 ```
 
-Specify the name of the database you want to deploy to:
+Specify the name of the local (and, optionally, production) database you want
+to deploy to:
 
 ```
-cp env.example .env # now edit .env if you want to change the database.
-                    # The default is radio_beer_development
+cp kansorc.example .kansorc
 ```
+
+Now, edit `.kansorc` to change the local or production database.
 
 Deploy:
 
 ```
-bin/push
+kanso push
 ```
 
 You should see output ending with something like:
@@ -78,6 +80,17 @@ foreman start
 If couch isn't already running, it'll get run, too.
 
 Edit `index.html`, `lib/**/*.js`, and `static/scss/*.scss` to make changes.
+
+
+Deployment
+-----------------
+
+When you are ready to go live, make sure `.kansorc` has the correct credentials
+under the `production` key, then push:
+
+```
+kanso push production
+```
 
 Notes
 ===================
