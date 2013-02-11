@@ -9,6 +9,8 @@ class RfidScansCollection extends Backbone.Collection
 class RfidScanView extends Backbone.Marionette.ItemView
   tagName: 'li'
   template: 'rfidscan/show.html'
+  modelEvents:
+    "change": "render"
 
 class RfidScansView extends Backbone.Marionette.CollectionView
   itemView: RfidScanView
