@@ -24,11 +24,11 @@
           <!-- Everything you want hidden at 940px or less, place within here -->
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="#home">Home</a></li>
+              <li><a href="#home">Home</a></li>
               <li><a href="#taps">Taps</a></li>
               <li><a href="#beers">Beers</a></li>
               <li><a href="#readers">RFID Readers</a></li>
-              <li><a href="#scans">RFID Scan Log</a></li>
+              <li class="active"><a href="#scans">RFID Scan Log</a></li>
             </ul>
           </div>
         </div>
@@ -37,11 +37,11 @@
 
     <div class="row">
       <div id="app">
-        <div id="home"><h1>Welcome to Bartender</h1></div>
+        <div style="display: none;" id="home"><h1>Welcome to Bartender</h1></div>
         <div style="display: none;" id="taps"></div>
         <div style="display: none;" id="beers"></div>
         <div style="display: none;" id="readers"></div>
-        <div style="display: none;" id="scans"></div>
+        <div id="scans"></div>
       </div>
     </div>
 
@@ -61,6 +61,7 @@
     require('lib/jquery.couch');
     require('lib/backbone-couchdb');
     require('lib/backbone.marionette');
+    require('lib/backbone.marionette.handlebars');
   </script>
   <script type="text/javascript" src="static/js/bootstrap.js"></script>
 
