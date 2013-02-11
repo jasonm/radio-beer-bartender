@@ -2,6 +2,8 @@ class BeerView extends Backbone.Marionette.ItemView
   tagName: 'li'
   className: 'beer',
   template: 'beers/show.html'
+  modelEvents:
+    "change": "render"
 
 class BeersView extends Backbone.Marionette.CollectionView
   itemView: BeerView
