@@ -46,6 +46,5 @@ class App
     view = new BeersView({ collection: collection })
     @rootEl.find('#beers').append(view.$el)
     collection.fetch()
-    window.bc = collection
 
 exports.App = App
