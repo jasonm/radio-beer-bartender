@@ -81,6 +81,15 @@ If couch isn't already running, it'll get run, too.
 
 Edit `index.html`, `lib/**/*.js`, and `static/scss/*.scss` to make changes.
 
+Test Data
+-----------------
+Upload fixture data to play with:
+
+```
+kanso upload data/beers-with-ids.json
+```
+
+Create rfidscan events with the `CouchLogger` separate `CouchLogger` tool.
 
 Deployment
 -----------------
