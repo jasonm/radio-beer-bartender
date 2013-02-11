@@ -41,6 +41,10 @@ class App
 
       e.preventDefault()
 
+    @rootEl.find('#taps').html("<h1>TODO: Taps</h1>")
+    @rootEl.find('#beers').html("<h1>TODO: Beers</h1>")
+    @rootEl.find('#readers').html("<h1>TODO: Readers</h1>")
+
   setupScans: =>
     collection = new RfidScansCollection()
     view = new RfidScansView({ collection: collection })
