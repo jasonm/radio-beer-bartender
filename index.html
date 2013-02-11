@@ -3,43 +3,52 @@
 <head>
   <title>Bartender</title>
   <link rel="stylesheet" type="text/css" href="static/css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="static/css/bootstrap-responsive.css" />
   <link rel="stylesheet" type="text/css" href="static/css-compiled/application.css" />
 </head>
 <body>
   <div class="container">
-    <div class="navbar navbar-inverse">
-    <div class="navbar-inner">
-      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
+    <div class="row">
+      <div class="navbar">
+        <div class="navbar-inner">
+          <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
 
-      <!-- Be sure to leave the brand out there if you want it shown -->
-      <a class="brand" href="#">Bartender</a>
+          <!-- Be sure to leave the brand out there if you want it shown -->
+          <a class="brand" href="#"><img src="static/img/button-beer.png"> Bartender</a>
 
-      <!-- Everything you want hidden at 940px or less, place within here -->
-      <div class="nav-collapse collapse">
-        <ul class="nav">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">Taps</a></li>
-          <li><a href="#">Beers</a></li>
-          <li><a href="#">RFID Readers</a></li>
-        </ul>
+          <!-- Everything you want hidden at 940px or less, place within here -->
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#home">Home</a></li>
+              <li><a href="#taps">Taps</a></li>
+              <li><a href="#beers">Beers</a></li>
+              <li><a href="#readers">RFID Readers</a></li>
+              <li><a href="#scans">RFID Scan Log</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 
-
-    <h1>Bartender</h1>
-    <div id="app"></div>
+    <div class="row">
+      <div id="app">
+        <div id="home"><h1>Welcome to Bartender</h1></div>
+        <div style="display: none;" id="taps"></div>
+        <div style="display: none;" id="beers"></div>
+        <div style="display: none;" id="readers"></div>
+        <div style="display: none;" id="scans"></div>
+      </div>
+    </div>
 
     <footer class="row">
-      <ul class="footer-links">
+      <ul class="footer-links breadcrumb">
         <li>&copy; Jason Morrison 2013.  All Rights Reserved.</li>
       </ul>
-      </div>
     </footer>
   </div>
 
@@ -55,12 +64,13 @@
   </script>
   <script type="text/javascript" src="static/js/bootstrap.js"></script>
 
+
   <script type="text/javascript">
     // Get the show on the road!
     $(function() {
       var App = require('lib/app').App;
       var dbName = require('db').current().url.replace('/', '');
-      var app = new App(dbName, 'bartender', $('#app'));
+      var app = new App(dbName, 'bartender', $('#app'), $('.navbar .nav'));
       app.run();
     });
   </script>
