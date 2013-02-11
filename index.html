@@ -60,7 +60,8 @@
     // Get the show on the road!
     $(function() {
       var App = require('lib/app').App;
-      var app = new App('radio_beer_development', 'bartender', $('#app'));
+      var dbName = require('db').current().url.replace('/', '');
+      var app = new App(dbName, 'bartender', $('#app'));
       app.run();
     });
   </script>
