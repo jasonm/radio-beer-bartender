@@ -1,5 +1,6 @@
 {RfidScansView, RfidScansCollection} = require('lib/rfid_scans')
 {BeersView, BeersCollection} = require('lib/beers')
+{TapsView, TapsCollection} = require('lib/taps')
 {Router} = require('lib/router')
 
 class App
@@ -14,6 +15,7 @@ class App
   run: =>
     @setupScans()
     @setupBeers()
+    @setupTaps()
     @setupBlanks()
     @router = new Router(@rootEl)
     Backbone.history.start()
@@ -30,8 +32,13 @@ class App
     @rootEl.find('#region-beers').append(view.$el)
     collection.fetch()
 
+  setupTaps: =>
+    collection = new TapsCollection()
+    view = new TapsView({ collection: collection })
+    @rootEl.find('#region-taps').append(view.$el)
+    collection.fetch()
+
   setupBlanks: =>
-    @rootEl.find('#region-taps').html("<h1>TODO: Taps</h1>")
     @rootEl.find('#region-readers').html("<h1>TODO: Readers</h1>")
 
 exports.App = App
