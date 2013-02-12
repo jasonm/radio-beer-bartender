@@ -1,0 +1,24 @@
+<div class="control-group">
+  <label class="control-label" for="inputName">Name</label>
+  <div class="controls">
+    <input class="input-xxlarge" type="text" id="inputName" name="name" value="{{ name }}">
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label" for="inputAbv">ABV %</label>
+  <div class="controls">
+    <input class="input-xxlarge" type="text" id="inputAbv" name="abv" value="{{ abv }}">
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label" for="inputBreweryName">Brewery Name</label>
+  <div class="controls">
+    <input class="input-xxlarge" type="text" id="inputBreweryName" name="brewery[name]" value="{{ brewery.name }}">
+  </div>
+</div>
+<div class="control-group">
+  <label class="control-label" for="inputDescription">Description</label>
+  <div class="controls">
+    <textarea class="input-xxlarge" name="description" rows="8">{{ description }} </textarea>
+  </div>
+</div>
