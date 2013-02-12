@@ -1,6 +1,32 @@
 {RfidScanView, RfidScansView, RfidScan, RfidScansCollection} = require('lib/rfid_scans')
 {BeerView, BeersView, Beer, BeersCollection} = require('lib/beers')
 
+class Router extends Backbone.Router
+  initialize: (rootEl) =>
+    @rootEl = rootEl
+    @tabsEl = $('ul.nav') # TODO: inject
+
+  routes:
+    '': 'home'
+    'home': 'showHash'
+    'taps': 'showHash'
+    'beers': 'showHash'
+    'readers': 'showHash'
+    'scans': 'showHash'
+
+  showTab: (tab) =>
+    @rootEl.find('>div').hide()
+    @rootEl.find("##{tab}").show()
+
+    @tabsEl.find('li').removeClass('active')
+    @tabsEl.find("li a[href=##{tab}]").closest('li').addClass('active')
+
+  home: =>
+    @showTab 'home'
+
+  showHash: =>
+    @showTab document.location.hash.replace('#', '')
+
 class App
   constructor: (dbName, appName, rootEl, navEl) ->
     Backbone.couch_connector.config.collection_field_identifier = 'type'
@@ -13,28 +39,9 @@ class App
   run: =>
     @setupScans()
     @setupBeers()
-    @setupTabs()
-
-    @rootEl.find('#taps').html("<h1>TODO: Taps</h1>")
-    @rootEl.find('#readers').html("<h1>TODO: Readers</h1>")
-
-  setupTabs: =>
-    @tabsEl = $('ul.nav') # TODO: inject
-
-    setTab = (href) =>
-      # TODO: pushstate or routes or something
-      document.location.hash = href
-      @rootEl.find('>div').hide()
-      @rootEl.find(href).show()
-
-      @tabsEl.find('li').removeClass('active')
-      @tabsEl.find("li a[href=#{href}]").closest('li').addClass('active')
-
-    @navEl.find('a').click (e) =>
-      setTab $(e.currentTarget).attr('href')
-      e.preventDefault()
-
-    setTab(document.location.hash)
+    @setupBlanks()
+    @router = new Router(@rootEl)
+    Backbone.history.start()
 
   setupScans: =>
     collection = new RfidScansCollection()
@@ -47,5 +54,9 @@ class App
     view = new BeersView({ collection: collection })
     @rootEl.find('#beers').append(view.$el)
     collection.fetch()
+
+  setupBlanks: =>
+    @rootEl.find('#taps').html("<h1>TODO: Taps</h1>")
+    @rootEl.find('#readers').html("<h1>TODO: Readers</h1>")
 
 exports.App = App
