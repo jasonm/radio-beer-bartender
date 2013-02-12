@@ -14,7 +14,7 @@ exports.Router =
 
     showTab: (tab) =>
       @rootEl.find('>div').hide()
-      @rootEl.find("##{tab}").show()
+      @rootEl.find("#region-#{tab}").show()
 
       @tabsEl.find('li').removeClass('active')
       @tabsEl.find("li a[href=##{tab}]").closest('li').addClass('active')

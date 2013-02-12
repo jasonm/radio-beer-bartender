@@ -21,17 +21,17 @@ class App
   setupScans: =>
     collection = new RfidScansCollection()
     view = new RfidScansView({ collection: collection })
-    @rootEl.find('#scans').append(view.$el)
+    @rootEl.find('#region-scans').append(view.$el)
     collection.fetch()
 
   setupBeers: =>
     collection = new BeersCollection()
     view = new BeersView({ collection: collection })
-    @rootEl.find('#beers').append(view.$el)
+    @rootEl.find('#region-beers').append(view.$el)
     collection.fetch()
 
   setupBlanks: =>
-    @rootEl.find('#taps').html("<h1>TODO: Taps</h1>")
-    @rootEl.find('#readers').html("<h1>TODO: Readers</h1>")
+    @rootEl.find('#region-taps').html("<h1>TODO: Taps</h1>")
+    @rootEl.find('#region-readers').html("<h1>TODO: Readers</h1>")
 
 exports.App = App
