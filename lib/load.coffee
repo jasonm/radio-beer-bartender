@@ -13,6 +13,15 @@ exports.views =
         else
           emit(0, doc)
 
+  # to be used with group=true
+  distinctReadersFromRfidScans:
+    map: (doc) ->
+      if doc.type == 'rfid-scan'
+        readerDoc = { name: doc.reader_description, is_distinct_query: true }
+        emit(readerDoc, doc)
+    reduce: (keys, values) ->
+      null
+
 exports.filters =
   by_collection: (doc, req) ->
     # Adapt our data schema to backbone-couchdb lib by

@@ -92,7 +92,11 @@ Backbone.couch_connector = con =
       success : (data) =>
         _temp = []
         for doc in data.rows
-          if doc.value then _temp.push doc.value else _temp.push doc.doc
+          # JPM: handle group-by mapreduces
+          if _.isEqual(['key', 'value'], _.keys(doc)) && doc.value == null && doc.key.is_distinct_query
+            _temp.push doc.key
+          else
+            if doc.value then _temp.push doc.value else _temp.push doc.doc
         opts.success _temp
         opts.complete()
       error : (status, error, reason) ->

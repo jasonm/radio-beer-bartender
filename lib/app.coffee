@@ -43,6 +43,6 @@ class App
     collection = new ReadersCollection()
     view = new ReadersView({ collection: collection })
     @rootEl.find('#region-readers').append(view.$el)
-    collection.fetch()
+    collection.fetch({ group: true })
 
 exports.App = App

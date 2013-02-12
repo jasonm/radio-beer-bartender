@@ -3,8 +3,8 @@ class Reader extends Backbone.Model
 class ReadersCollection extends Backbone.Collection
   db:
     changes: true
+    view: 'distinctReadersFromRfidScans'
   model: Reader
-  url: '/reader'
 
 class ReaderView extends Backbone.Marionette.ItemView
   tagName: 'li'
