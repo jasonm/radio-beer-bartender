@@ -1,5 +1,5 @@
-{RfidScanView, RfidScansView, RfidScan, RfidScansCollection} = require('lib/rfid_scans')
-{BeerView, BeersView, Beer, BeersCollection} = require('lib/beers')
+{RfidScansView, RfidScansCollection} = require('lib/rfid_scans')
+{BeersView, BeersCollection} = require('lib/beers')
 {Router} = require('lib/router')
 
 class App
