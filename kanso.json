@@ -8,9 +8,9 @@
   },
   "modules": ["lib"],
   "load": "lib/load",
- "handlebars": {
-      "all_partials": false,
-      "templates": "templates"
+  "handlebars": {
+    "all_partials": false,
+    "templates": "templates"
   },
   "dependencies": {
     "coffee-script-precompiler": null,
