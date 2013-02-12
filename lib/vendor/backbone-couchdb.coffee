@@ -7,6 +7,7 @@ backbone-couchdb.js is licensed under the MIT license.
 Backbone.couch_connector = con =
   # some default config values for the database connections
   config : 
+    collection_field_identifier : 'collection'
     db_name : "backbone_connect"
     ddoc_name : "backbone_example"
     view_name : "byCollection"
@@ -177,7 +178,7 @@ Backbone.couch_connector = con =
   create : (model, opts) ->
     vals = model.toJSON()
     coll = @helpers.extract_collection_name model
-    vals.collection = coll if coll.length > 0
+    vals[con.config.collection_field_identifier] = coll if coll.length > 0
     @helpers.make_db().saveDoc vals,
       success : (doc) ->
         opts.success
