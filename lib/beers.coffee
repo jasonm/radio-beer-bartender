@@ -7,6 +7,7 @@ class BeerView extends StatefulItemView
     'show'
   events:
     'click button.btn-save': 'save'
+    'click a.delete': 'promptToDelete'
   modelEvents:
     'change': 'render'
 
@@ -17,6 +18,11 @@ class BeerView extends StatefulItemView
     @model.set(Backbone.Syphon.serialize(@))
     @model.save()
     @setState 'show'
+
+  promptToDelete: (e) =>
+    e.preventDefault()
+    if confirm("Are you sure you want to delete #{@model.get('name')}?")
+      @model.destroy()
 
   getTemplate: (data) ->
     "beers/#{@state}.html"
