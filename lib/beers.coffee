@@ -1,23 +1,14 @@
-class BeerView extends Backbone.Marionette.ItemView
+{StatefulItemView} = require 'lib/stateful_item_view'
+
+class BeerView extends StatefulItemView
   tagName: 'li'
   className: 'beer'
+  state:
+    'show'
+  events:
+    'click button.btn-save': 'save'
   modelEvents:
     'change': 'render'
-
-  events:
-    'click a.state-control': 'clickState'
-    'click button.btn-save': 'save'
-
-  initialize: ->
-    @state = 'show'
-
-  clickState: (e) =>
-    @setState($(e.target).data('state'))
-    e.preventDefault()
-
-  setState: (state) =>
-    @state = state
-    @render()
 
   save: (e) =>
     e.preventDefault()
@@ -30,25 +21,17 @@ class BeerView extends Backbone.Marionette.ItemView
   getTemplate: (data) ->
     "beers/#{@state}.html"
 
-class NewBeerView extends Backbone.Marionette.ItemView
+class NewBeerView extends StatefulItemView
   tagName: 'li'
   className: 'beer-new'
+  state:
+    'prompt-new'
 
   events:
-    'click a.state-control': 'clickState'
     'click button.btn-save': 'save'
 
   initialize: (options) =>
-    @state = 'prompt-new'
     @collection = options.collection
-
-  clickState: (e) =>
-    @setState($(e.target).data('state'))
-    e.preventDefault()
-
-  setState: (state) =>
-    @state = state
-    @render()
 
   save: (e) =>
     e.preventDefault()
@@ -74,7 +57,6 @@ class Beer extends Backbone.Model
     name: 'Text'
     abv: 'Text'
     description: 'Text'
-
 
 class BeersCollection extends Backbone.Collection
   db:
