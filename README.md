@@ -19,18 +19,14 @@ Install node and npm:
 brew install node
 ```
 
-Install [kanso](http://kan.so):
+Install some build tools:
 
 ```
-npm install -g kanso
+npm install -g kanso node-sass
+gem install watchr
 ```
 
-Install rubygem dependencies:
 
-```
-gem install sass foreman watchr ruby-fsevent # Mac OSX
-gem install sass foreman watchr rev          # Linux/BSD
-```
 
 Installation
 ------------
@@ -70,16 +66,22 @@ Open that URL to view the app.
 Development
 -------------
 
-As you develop, automatically rebuild SCSS files with `sass` and the Kanso site
-with `watchr`:
+As you develop, automatically rebuild the site with `watchr`:
 
 ```
-foreman start
+watchr kanso.watchr
 ```
-
-If couch isn't already running, it'll get run, too.
 
 Edit `index.html`, `lib/**/*.js`, and `static/scss/*.scss` to make changes.
+
+Save your hard-earned keystrokes.  Automatically reload the browser when
+a rebuild happens with `live-reload` (the build touches `tmp/livereload.txt`
+to initiate this handoff):
+
+```
+npm install -g live-reload
+live-reload tmp/livereload.txt
+```
 
 Test Data
 -----------------

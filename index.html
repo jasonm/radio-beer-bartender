@@ -67,6 +67,10 @@
 
 
   <script type="text/javascript">
+    if (document.location.hostname === "localhost") {
+      document.write('\x3Cscript type="text/javascript" src="http://localhost:9090">\x3C/script>');
+    }
+
     // Get the show on the road!
     $(function() {
       var App = require('lib/app').App;
