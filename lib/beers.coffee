@@ -32,6 +32,7 @@ class BeerView extends Backbone.Marionette.ItemView
 class BeersView extends Backbone.Marionette.CollectionView
   itemView: BeerView
   tagName: 'ul'
+  className: 'unstyled'
 
 class Beer extends Backbone.Model
   schema:

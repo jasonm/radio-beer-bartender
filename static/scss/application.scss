@@ -22,3 +22,14 @@ li.beer {
   span.description {
   }
 }
+
+div#beers>ul {
+  li {
+    padding: 10px;
+    outline: 1px solid #eee;
+  }
+
+  li:nth-child(odd) {
+    background: #eee;
+  }
+}
