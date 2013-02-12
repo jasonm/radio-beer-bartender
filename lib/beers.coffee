@@ -1,18 +1,44 @@
 class BeerView extends Backbone.Marionette.ItemView
   tagName: 'li'
   className: 'beer'
-  template: 'beers/edit.html'
   modelEvents:
-    "change": "render"
+    'change': 'render'
 
-  getTemplate: =>
-    "beers/edit.html"
+  events:
+    'click a.state-control': 'clickState'
+    'click button.btn-save': 'save'
+
+  initialize: ->
+    @state = 'show'
+
+  clickState: (e) =>
+    @setState($(e.target).data('state'))
+
+  setState: (state) =>
+    @state = state
+    @render()
+
+  save: (e) =>
+    e.preventDefault()
+    @model.once 'change', =>
+      @$('i.changed').show().fadeOut(1000)
+    @model.set(Backbone.Syphon.serialize(@))
+    @model.save()
+    @setState 'show'
+
+  getTemplate: (data) ->
+    "beers/#{@state}.html"
 
 class BeersView extends Backbone.Marionette.CollectionView
   itemView: BeerView
   tagName: 'ul'
 
 class Beer extends Backbone.Model
+  schema:
+    name: 'Text'
+    abv: 'Text'
+    description: 'Text'
+
 
 class BeersCollection extends Backbone.Collection
   db:
@@ -21,46 +47,3 @@ class BeersCollection extends Backbone.Collection
   url: '/beer'
 
 _.extend(exports, {BeerView, BeersView, Beer, BeersCollection})
-
-# class BeerShowView extends Backbone.Marionette.ItemView
-#   className: 'show'
-#
-#   initialize: (options) ->
-#     @model = options.model
-#     @listenTo(@model, 'change', @render)
-#
-#   render: =>
-#     @$el.empty()
-#     @$el.html("#{@model.get('created_at')} - scanned #{@model.get('tag_id')} at #{@model.get('reader_description')}")
-#
-# class BeerEditView extends Backbone.View
-#   className: 'edit'
-#   initialize: (options) ->
-#     @model = options.model
-#     @listenTo(@model, 'change', @render)
-#
-#   render: =>
-#     @$el.empty()
-#     @$el.html("edit mode!")
-
-# class BeerView extends Backbone.Marionette.CompositeView
-#   tagName: 'li'
-#   template: 'beers/show.html'
-#
-#   events:
-#     'click .toggle': 'toggle'
-#
-#   initialize: (options) ->
-#     @model = options.model
-#     @showView = new BeerShowView({@model})
-#     @editView = new BeerEditView({@model})
-#     @children.add @showView
-#     @children.add @editView
-#
-#   toggle: =>
-#     @showView.$el.toggle()
-#     @editView.$el.toggle()
-#
-#   onRender: =>
-#     @showView.$el.show()
-#     @editView.$el.hide()

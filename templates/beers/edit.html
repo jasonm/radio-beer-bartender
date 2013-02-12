@@ -1,1 +1,26 @@
-Edit
+<form class="form-horizontal">
+  <div class="control-group">
+    <label class="control-label" for="inputName">Name</label>
+    <div class="controls">
+      <input class="input-xxlarge" type="text" id="inputName" name="name" value="{{ name }}">
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="inputAbv">ABV %</label>
+    <div class="controls">
+      <input class="input-xxlarge" type="text" id="inputAbv" name="abv" value="{{ abv }}">
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="inputDescription">Description</label>
+    <div class="controls">
+      <textarea class="input-xxlarge" name="description" rows="8">{{ description }} </textarea>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <button type="submit" class="btn btn-save">Save</button>
+      <a href="#" class="state-control" data-state="show">Cancel</a>
+    </div>
+  </div>
+</form>
