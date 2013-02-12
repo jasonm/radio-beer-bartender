@@ -35,8 +35,7 @@ class NewBeerView extends StatefulItemView
 
   save: (e) =>
     e.preventDefault()
-    attrs = Backbone.Syphon.serialize(@)
-    model = @collection.create(attrs)
+    @collection.create(Backbone.Syphon.serialize(@))
     @setState 'prompt-new'
 
   getTemplate: (data) ->
