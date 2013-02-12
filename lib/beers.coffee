@@ -13,6 +13,7 @@ class BeerView extends Backbone.Marionette.ItemView
 
   clickState: (e) =>
     @setState($(e.target).data('state'))
+    e.preventDefault()
 
   setState: (state) =>
     @state = state
@@ -43,6 +44,7 @@ class NewBeerView extends Backbone.Marionette.ItemView
 
   clickState: (e) =>
     @setState($(e.target).data('state'))
+    e.preventDefault()
 
   setState: (state) =>
     @state = state
