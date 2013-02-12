@@ -3,8 +3,8 @@ class RfidScan extends Backbone.Model
 class RfidScansCollection extends Backbone.Collection
   db:
     changes: true
+    view: 'rfidScansByCreatedAtDesc'
   model: RfidScan
-  url: '/rfid-scan'
 
 class RfidScanView extends Backbone.Marionette.ItemView
   tagName: 'li'
