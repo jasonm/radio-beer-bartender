@@ -26,10 +26,15 @@ li.beer {
 div#region-beers>ul, div#region-taps>ul {
   >li {
     padding: 10px;
-    outline: 1px solid #eee;
+    outline: 1px solid #f5f5f5;
+
   }
 
   >li:nth-child(odd) {
-    background: #eee;
+    background: #f5f5f5;
   }
+}
+
+span[data-toggle=tooltip] {
+  border-bottom: 1px dashed;
 }
