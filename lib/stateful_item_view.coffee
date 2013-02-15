@@ -18,3 +18,4 @@ exports.StatefulItemView =
     setState: (state) =>
       @state = state
       @render()
+      @trigger('change:state', state)
