@@ -3,6 +3,7 @@
 {TapsView, TapsCollection} = require('lib/taps')
 {ReadersView, ReadersCollection} = require('lib/readers')
 {Router} = require('lib/router')
+require 'lib/view_helpers'
 
 class App
   constructor: (dbName, appName, rootEl, navEl) ->
