@@ -22,27 +22,22 @@ class App
     Backbone.history.start()
 
   setupScans: =>
-    collection = new RfidScansCollection()
-    view = new RfidScansView({ collection: collection })
-    @rootEl.find('#region-scans').append(view.$el)
-    collection.fetch()
+    @setup 'scans', RfidScansView, RfidScansCollection
 
   setupBeers: =>
-    collection = new BeersCollection()
-    view = new BeersView({ collection: collection })
-    @rootEl.find('#region-beers').append(view.$el)
-    collection.fetch()
+    @setup 'beers', BeersView, BeersCollection
 
   setupTaps: =>
-    collection = new TapsCollection()
-    view = new TapsView({ collection: collection })
-    @rootEl.find('#region-taps').append(view.$el)
-    collection.fetch()
+    @setup 'taps', TapsView, TapsCollection
 
   setupReaders: =>
-    collection = new ReadersCollection()
-    view = new ReadersView({ collection: collection })
-    @rootEl.find('#region-readers').append(view.$el)
-    collection.fetch({ group: true })
+    @setup 'readers', ReadersView, ReadersCollection, { group: true }
+
+  setup: (regionName, viewType, collectionType, fetchOptions = {}) =>
+    collection = new collectionType()
+    collection.fetch(fetchOptions)
+
+    view = new viewType({ collection: collection })
+    @rootEl.find("#region-#{regionName}").append(view.$el)
 
 exports.App = App
