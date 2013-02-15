@@ -5,13 +5,15 @@
 
   {{#if tappings}}
     <h3>Prior tappings:</h3>
-    {{#each tappings}}
-      <p>
-        Tapped {{ beer.name }} <span data-toggle="tooltip" title="{{ started_at }}">{{ calendarTime started_at }}</span>.
-        {{#if finished_at}}
-          Finished it <span data-toggle="tooltip" title="{{ finished_at }}">{{ calendarTime finished_at }}</span>.
-        {{/if}}
-      </p>
-    {{/each}}
+    <ul>
+      {{#each tappings}}
+        <li>
+          Tapped {{ beer.name }} <span data-toggle="tooltip" title="{{ started_at }}">{{ calendarTime started_at }}</span>.
+          {{#if finished_at}}
+            Finished it <span data-toggle="tooltip" title="{{ finished_at }}">{{ calendarTime finished_at }}</span>.
+          {{/if}}
+        </li>
+      {{/each}}
+    </ul>
   {{/if}}
 </div>
