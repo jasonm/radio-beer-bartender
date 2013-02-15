@@ -1,4 +1,5 @@
 {StatefulItemView} = require 'lib/stateful_item_view'
+{NewTappingView, Tapping, TappingsCollection} = require 'lib/tappings'
 
 class TapView extends StatefulItemView
   tagName: 'li'
@@ -11,13 +12,41 @@ class TapView extends StatefulItemView
   modelEvents:
     'change': 'render'
 
+  initialize: =>
+    @on 'change:state', @onChangeState
+
   save: (e) =>
-    e.preventDefault()
+    e.preventDefault() if e
     @model.once 'change', =>
       @$('i.changed').show().fadeOut(1000)
     @model.set(Backbone.Syphon.serialize(@))
     @model.save()
     @setState 'show'
+
+  onRender: =>
+    @$('[data-toggle=tooltip]').tooltip({})
+
+  serializeData: ->
+    beers = window.app.collections.beers
+
+    _.extend @model.toJSON(),
+      started_at: moment(@model.attributes.started_at).format("YYYY-MM-DD HH:mm:ss")
+      finished_at: moment(@model.attributes.finished_at).format("YYYY-MM-DD HH:mm:ss")
+      beers: beers.toJSON()
+      tappings: _.map(@model.get('tappings').toJSON(), (tappingAttributes) ->
+        _.extend tappingAttributes,
+          beer: beers.get(tappingAttributes.beer_id)?.toJSON()
+      )
+
+  onChangeState: (state) =>
+    # TODO: This should clearly be its own view class, extract.
+    if state == 'on-tap'
+      @newTappingView = new NewTappingView
+        tap: @model
+        model: new Tapping()
+        el: @$('.new-tapping')
+      @newTappingView.render()
+      @listenTo @newTappingView, 'saved', @save
 
   promptToDelete: (e) =>
     e.preventDefault()
@@ -40,7 +69,6 @@ class NewTapView extends StatefulItemView
     @collection = options.collection
 
   save: (e) =>
-    e.preventDefault()
     @collection.create(Backbone.Syphon.serialize(@))
     @setState 'prompt-new'
 
@@ -57,11 +85,20 @@ class TapsView extends Backbone.Marionette.CollectionView
     @newView.render()
     @$el.prepend @newView.el
 
-class Tap extends Backbone.Model
-  schema:
-    name: 'Text'
-    abv: 'Text'
-    description: 'Text'
+class Tap extends Backbone.RelationalModel
+  relations: [
+    {
+      type: Backbone.HasMany,
+      key: 'tappings',
+      relatedModel: Tapping,
+      collectionType: TappingsCollection
+      reverseRelation: {
+        key: 'tap'
+      }
+    }
+  ]
+
+Tap.setup()
 
 class TapsCollection extends Backbone.Collection
   db:
@@ -70,4 +107,3 @@ class TapsCollection extends Backbone.Collection
   url: '/tap'
 
 _.extend(exports, {TapView, TapsView, Tap, TapsCollection})
-

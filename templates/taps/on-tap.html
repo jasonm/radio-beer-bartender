@@ -1,0 +1,17 @@
+{{{include "taps/show.html"}}}
+
+<div style="margin-top: 20px;">
+  <div class="new-tapping"></div>
+
+  {{#if tappings}}
+    <h3>Prior tappings:</h3>
+    {{#each tappings}}
+      <p>
+        Tapped {{ beer.name }} <span data-toggle="tooltip" title="{{ started_at }}">{{ calendarTime started_at }}</span>.
+        {{#if finished_at}}
+          Finished it <span data-toggle="tooltip" title="{{ finished_at }}">{{ calendarTime finished_at }}</span>.
+        {{/if}}
+      </p>
+    {{/each}}
+  {{/if}}
+</div>

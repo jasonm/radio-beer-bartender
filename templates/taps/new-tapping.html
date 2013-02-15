@@ -1,0 +1,46 @@
+<form class="form-horizontal">
+  <div class="control-group">
+    <label class="control-label" for="inputBeerId">Beer</label>
+    <div class="controls">
+      <select class="input-xxlarge chzn-select" id="inputBeerId" name="beer_id">
+        <option selected="selected" value=""></option>
+        {{#each beers}}
+          <option value="{{ _id }}">{{ brewery.name }}: {{ name }}</option>
+        {{/each}}
+      </select>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label" for="inputStartedAt">Started at</label>
+    <div class="controls">
+      <div class="input-append input-xxlarge date date-time-picker">
+        <input id="inputStartedAt" data-format="yyyy-MM-dd hh:mm:ss" type="text" value="{{ started_at }}"></input>
+        <span class="add-on">
+          <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+          </i>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label" for="inputFinishedAt">Finished at</label>
+    <div class="controls">
+      <div class="input-append input-xxlarge date date-time-picker">
+        <input id="inputFinishedAt" data-format="yyyy-MM-dd hh:mm:ss" type="text" value="{{ finished_at }}"></input>
+        <span class="add-on">
+          <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+          </i>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <div class="controls">
+      <button type="submit" class="btn btn-save">Put on tap</button>
+      <a href="#" class="state-control" data-state="show">Cancel</a>
+    </div>
+  </div>
+</form>
