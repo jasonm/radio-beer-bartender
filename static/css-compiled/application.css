@@ -11,8 +11,8 @@ li.beer span.name {
 li.beer span.abv {
   font-style: italic; }
 
-div#region-beers > ul li, div#region-taps > ul li {
+div#region-beers > ul > li, div#region-taps > ul > li {
   padding: 10px;
   outline: 1px solid #eee; }
-div#region-beers > ul li:nth-child(odd), div#region-taps > ul li:nth-child(odd) {
+div#region-beers > ul > li:nth-child(odd), div#region-taps > ul > li:nth-child(odd) {
   background: #eee; }
