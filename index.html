@@ -81,7 +81,7 @@
     $(function() {
       var App = require('lib/app').App;
       var dbName = require('db').current().url.replace('/', '');
-      var app = new App(dbName, 'bartender', $('#app'), $('.navbar .nav'));
+      window.app = new App(dbName, 'bartender', $('#app'), $('.navbar .nav'));
       app.run();
     });
   </script>

@@ -10,6 +10,7 @@ class App
     Backbone.couch_connector.config.db_name = dbName
     Backbone.couch_connector.config.ddoc_name = appName
     Backbone.couch_connector.config.global_changes = false
+    @collections = {}
     @rootEl = rootEl
     @navEl = navEl
 
@@ -36,6 +37,7 @@ class App
   setup: (regionName, viewType, collectionType, fetchOptions = {}) =>
     collection = new collectionType()
     collection.fetch(fetchOptions)
+    @collections[regionName] = collection
 
     view = new viewType({ collection: collection })
     @rootEl.find("#region-#{regionName}").append(view.$el)
