@@ -69,6 +69,7 @@ class NewTapView extends StatefulItemView
     @collection = options.collection
 
   save: (e) =>
+    e.preventDefault() if e
     @collection.create(Backbone.Syphon.serialize(@))
     @setState 'prompt-new'
 
