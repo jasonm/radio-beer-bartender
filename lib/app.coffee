@@ -33,7 +33,7 @@ class App
     @setup 'taps', TapsView, TapsCollection
 
   setupReaders: =>
-    @setup 'readers', ReadersView, ReadersCollection, { group: true }
+    @setup 'readers', ReadersView, ReadersCollection
 
   setup: (regionName, viewType, collectionType, fetchOptions = {}) =>
     collection = new collectionType()
