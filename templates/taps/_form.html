@@ -3,8 +3,12 @@
   <div class="controls">
     <input class="input-xxlarge" type="text" id="inputName" name="name" value="{{ name }}">
   </div>
+  <label class="control-label" for="inputReaderId">Reader ID</label>
+  <div class="controls">
+    <input class="input-xxlarge" type="text" id="inputName" name="reader_id" value="{{ reader_id }}">
+  </div>
   <label class="control-label">Tap ID</label>
   <div class="controls">
-    <p>{{ _id }}</p>
+    <input class="input-xxlarge" type="text" value="{{ _id }}" readonly="readonly">
   </div>
 </div>
